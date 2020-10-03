@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace BlackJack
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnPrueba_Click(object sender, RoutedEventArgs e)
+        {
+            //Card c = new Card('♣', "A");
+
+            //txtPrueba.Text = c.Color + c.Score.ToString();
         }
     }
 }
