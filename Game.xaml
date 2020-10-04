@@ -11,31 +11,13 @@
         <Button Name="btnStart" Content="Start Game" HorizontalAlignment="Left" Height="44" Margin="611,32,0,0" VerticalAlignment="Top" Width="147" FontFamily="Segoe UI Black" FontSize="20" Click="btnStart_Click"/>
         <Label Content="Player's Hand" HorizontalAlignment="Center" Height="41" Margin="0,377,0,0" VerticalAlignment="Top" Width="154" FontFamily="Segoe UI Black" FontSize="20" Foreground="White"/>
         <Label Content="Dealer's Hand" HorizontalAlignment="Center" Height="41" Margin="0,102,0,0" VerticalAlignment="Top" Width="154" FontFamily="Segoe UI Black" FontSize="20" Foreground="White"/>
-        <Label Name="lbPlayerScore" Content="Total: " HorizontalAlignment="Center" Height="37" Margin="0,341,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontFamily="Segoe UI Black" FontSize="16"/>
-        <Label Name="lbDCard1" Content="" HorizontalAlignment="Left" Height="41" Margin="74,141,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbDCard2" Content="" HorizontalAlignment="Left" Height="41" Margin="141,141,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbDCard3" Content="" HorizontalAlignment="Left" Height="41" Margin="210,141,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbDCard4" Content="" HorizontalAlignment="Left" Height="41" Margin="277,141,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbDCard5" Content="" HorizontalAlignment="Left" Height="41" Margin="353,141,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbDCard6" Content="" HorizontalAlignment="Left" Height="41" Margin="420,141,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbDCard7" Content="" HorizontalAlignment="Left" Height="41" Margin="489,141,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbDCard8" Content="" HorizontalAlignment="Left" Height="41" Margin="556,141,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbDCard9" Content="" HorizontalAlignment="Left" Height="41" Margin="619,141,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbDCard10" Content="" HorizontalAlignment="Left" Height="41" Margin="685,141,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbPCard1" Content="" HorizontalAlignment="Left" Height="41" Margin="33,296,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbPCard2" Content="" HorizontalAlignment="Left" Height="41" Margin="100,296,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbPCard3" Content="" HorizontalAlignment="Left" Height="41" Margin="169,296,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbPCard4" Content="" HorizontalAlignment="Left" Height="41" Margin="236,296,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbPCard5" Content="" HorizontalAlignment="Left" Height="41" Margin="312,296,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbPCard6" Content="" HorizontalAlignment="Left" Height="41" Margin="379,296,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbPCard7" Content="" HorizontalAlignment="Left" Height="41" Margin="448,296,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbPCard8" Content="" HorizontalAlignment="Left" Height="41" Margin="515,296,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbPCard9" Content="" HorizontalAlignment="Left" Height="41" Margin="578,296,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbPCard10" Content="" HorizontalAlignment="Left" Height="41" Margin="644,296,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbPCard11" Content="" HorizontalAlignment="Left" Height="41" Margin="710,296,0,0" VerticalAlignment="Top" Width="50" FontFamily="Segoe UI Black" FontSize="24"/>
-        <Label Name="lbMatchResults" Content="" HorizontalAlignment="Left" Height="74" Margin="277,187,0,0" VerticalAlignment="Top" Width="237" FontFamily="Segoe UI Black" FontSize="48"/>
+        <Label Name="lbPlayerScore" Content="Total = 0 " HorizontalAlignment="Center" Height="37" Margin="0,341,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontFamily="Segoe UI Black" FontSize="16"/>
+        <Label Name="lbMatchResults" Content="" HorizontalAlignment="Center" Height="74" Margin="0,217,0,0" VerticalAlignment="Top" Width="236" FontFamily="Segoe UI Black" FontSize="48"/>
         <Button Name="btnHit" Content="Hit" HorizontalAlignment="Left" Height="40" Margin="52,364,0,0" VerticalAlignment="Top" Width="94" FontSize="20" FontFamily="Segoe UI Black" Click="btnHit_Click"/>
         <Button Name="btnStand" Content="Stand" HorizontalAlignment="Left" Height="40" Margin="169,364,0,0" VerticalAlignment="Top" Width="94" FontSize="20" FontFamily="Segoe UI Black" Click="btnStand_Click"/>
+        <Label Name="lbDealerCards" Content="" HorizontalAlignment="Left" Height="39" Margin="82,173,0,0" VerticalAlignment="Top" Width="617" Background="White" FontFamily="Segoe UI Black" FontSize="24"/>
+        <Label Name="lbPlayerCards" Content="" HorizontalAlignment="Left" Height="39" Margin="52,297,0,0" VerticalAlignment="Top" Width="677" Background="White" FontFamily="Segoe UI Black" FontSize="24"/>
+        <Label Name="lbDealerScore" Content="Total = 0 " HorizontalAlignment="Center" Height="37" Margin="0,131,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontFamily="Segoe UI Black" FontSize="16"/>
 
     </Grid>
 </Window>
