@@ -8,8 +8,10 @@ namespace BlackJack
     public class Dealer
     {
         private List<Card> deck;
+        private List<Card> hand;
 
         public List<Card> Deck { get => deck; set => deck = value; }
+        public List<Card> Hand { get => hand; set => hand = value; }
 
         public void Generate()
         {
@@ -23,6 +25,20 @@ namespace BlackJack
                 {
                     deck.Add(new Card(suit, symbol));
                 }
+            }
+        }
+
+        public void Randomize()
+        {
+            List<Card> OrderDeck = deck;
+            deck = new List<Card>();
+
+            Random num = new Random();
+            while (OrderDeck.Count > 0)
+            {
+                int val = num.Next(0, OrderDeck.Count - 1);
+                deck.Add(OrderDeck[val]);
+                OrderDeck.RemoveAt(val);
             }
         }
     }
