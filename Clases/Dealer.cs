@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Media.Animation;
 
@@ -16,6 +17,7 @@ namespace BlackJack
         public void Generate()
         {
             deck = new List<Card>();
+            hand = new List<Card>();
             char[] suits = { '♥', '♦', '♣', '♠' };
             string[] symbols = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
 
@@ -40,6 +42,26 @@ namespace BlackJack
                 deck.Add(OrderDeck[val]);
                 OrderDeck.RemoveAt(val);
             }
+        }
+
+        public Card Deal()
+        {
+            Card c = deck.Last();
+            deck.Remove(c);
+            return c;
+        }
+
+        public void AddCard(Card card)
+        {
+            hand.Add(card);
+        }
+
+        public void Init()
+        {
+            Card firstcard = Deal();
+            AddCard(firstcard);
+            Card secondcard = Deal();
+            AddCard(secondcard);
         }
     }
 }

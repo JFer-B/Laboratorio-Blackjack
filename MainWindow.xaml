@@ -7,8 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock Name="txtPrueba" HorizontalAlignment="Left" Height="294" Margin="443,76,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBlock Name="txtPrueba" HorizontalAlignment="Left" Height="141" Margin="342,47,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Width="297"/>
         <Button Name="btnPrueba" Content="Button" HorizontalAlignment="Left" Height="58" Margin="139,130,0,0" VerticalAlignment="Top" Width="105" Click="btnPrueba_Click"/>
+        <Button Name="btnDeal" Content="Deal" HorizontalAlignment="Left" Margin="154,242,0,0" VerticalAlignment="Top" Height="39" Width="76" Click="Button_Click"/>
+        <TextBox Name="txtDealerHand" HorizontalAlignment="Left" Height="45" Margin="400,217,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="178"/>
+        <Button Name="Init" Content="Init" HorizontalAlignment="Left" Margin="154,319,0,0" VerticalAlignment="Top" Height="28" Width="76" Click="Init_Click"/>
 
     </Grid>
 </Window>

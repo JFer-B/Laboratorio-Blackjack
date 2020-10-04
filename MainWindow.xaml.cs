@@ -20,6 +20,7 @@ namespace BlackJack
     /// </summary>
     public partial class MainWindow : Window
     {
+        Dealer d;
         public MainWindow()
         {
             InitializeComponent();
@@ -27,19 +28,83 @@ namespace BlackJack
 
         private void btnPrueba_Click(object sender, RoutedEventArgs e)
         {
-            Dealer d = new Dealer();
+            d = new Dealer();
             txtPrueba.Text = "";
-
+          
             d.Generate();
             d.Randomize();
 
+            int count = 1;
             foreach (Card c in d.Deck)
             {
-                txtPrueba.Text += c.Symbol + c.Suit + "\n";
-                //if(c.Symbol == "K")
-                //{
-                   // txtPrueba.Text += c.Symbol + c.Suit + "\n";
-                //}
+                
+                if(count == 13)
+                {
+                    txtPrueba.Text += c.Symbol + c.Suit + "\n";
+                    count = 1;
+                }
+                else
+                {
+                    txtPrueba.Text += c.Symbol + c.Suit + " ";
+                    count++;
+                }
+                
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Card card = d.Deal();
+            d.AddCard(card);
+            txtDealerHand.Text = "";
+            foreach (Card c in d.Hand)
+            {
+                txtDealerHand.Text += c.Symbol + c.Suit + " ";
+            }
+            int count = 1;
+            txtPrueba.Text = "";
+            foreach (Card c in d.Deck)
+            {
+
+                if (count == 13)
+                {
+                    txtPrueba.Text += c.Symbol + c.Suit + "\n";
+                    count = 1;
+                }
+                else
+                {
+                    txtPrueba.Text += c.Symbol + c.Suit + " ";
+                    count++;
+                }
+
+            }
+        }
+
+        private void Init_Click(object sender, RoutedEventArgs e)
+        {
+
+            d.Init();
+            txtDealerHand.Text = "";
+            foreach (Card c in d.Hand)
+            {
+                txtDealerHand.Text += c.Symbol + c.Suit + " ";
+            }
+            int count = 1;
+            txtPrueba.Text = "";
+            foreach (Card c in d.Deck)
+            {
+
+                if (count == 13)
+                {
+                    txtPrueba.Text += c.Symbol + c.Suit + "\n";
+                    count = 1;
+                }
+                else
+                {
+                    txtPrueba.Text += c.Symbol + c.Suit + " ";
+                    count++;
+                }
+
             }
         }
     }
