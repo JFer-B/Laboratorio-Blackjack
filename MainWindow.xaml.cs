@@ -27,9 +27,18 @@ namespace BlackJack
 
         private void btnPrueba_Click(object sender, RoutedEventArgs e)
         {
-            Card c = new Card('♣', "Q");
+            Dealer d = new Dealer();
 
-            txtPrueba.Text = c.Color + c.Score.ToString();
+            d.Generate();
+
+            foreach (Card c in d.Deck)
+            {
+                txtPrueba.Text += c.Symbol + c.Suit + " ";
+                if(c.Symbol == "K")
+                {
+                    txtPrueba.Text += c.Symbol + c.Suit + "\n";
+                }
+            }
         }
     }
 }

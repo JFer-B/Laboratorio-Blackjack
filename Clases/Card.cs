@@ -39,7 +39,7 @@ namespace BlackJack
             {
                 if(symbol == "A")
                 {
-                    value = 11;
+                    value = 1;
                 }
                 else
                 {
