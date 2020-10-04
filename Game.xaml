@@ -8,7 +8,7 @@
         Title="Game" Height="450" Width="800">
     <Grid Background="#FF285725">
         <Label Content="BLACKJACK" HorizontalAlignment="Left" Height="87" Margin="10,10,0,0" VerticalAlignment="Top" Width="368" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black" FontSize="60" Background="{x:Null}"/>
-        <Button Name="btnStart" Content="Start Game" HorizontalAlignment="Left" Height="44" Margin="582,40,0,0" VerticalAlignment="Top" Width="147" FontFamily="Segoe UI Black" FontSize="20" Click="btnStart_Click"/>
+        <Button Name="btnStart" Content="Shuffle" HorizontalAlignment="Left" Height="44" Margin="582,40,0,0" VerticalAlignment="Top" Width="117" FontFamily="Segoe UI Black" FontSize="20" Click="btnStart_Click"/>
         <Label Content="Player's Hand" HorizontalAlignment="Center" Height="41" Margin="0,377,0,0" VerticalAlignment="Top" Width="154" FontFamily="Segoe UI Black" FontSize="20" Foreground="White"/>
         <Label Content="Dealer's Hand" HorizontalAlignment="Center" Height="41" Margin="0,102,0,0" VerticalAlignment="Top" Width="154" FontFamily="Segoe UI Black" FontSize="20" Foreground="White"/>
         <Label Name="lbPlayerScore" Content="Total = 0 " HorizontalAlignment="Center" Height="37" Margin="0,341,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontFamily="Segoe UI Black" FontSize="16"/>

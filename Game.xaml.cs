@@ -17,33 +17,39 @@ namespace BlackJack
     /// </summary>
     public partial class Game : Window
     {
+        int MatchesCount;
+        int VictoryCount;
+        int DefeatCount;
         public Game()
         {
             InitializeComponent();
             btnHit.Visibility = Visibility.Collapsed;
             btnStand.Visibility = Visibility.Collapsed;
             btnNewRound.Visibility = Visibility.Collapsed;
+            MatchesCount = 0;
+            VictoryCount = 0;
+            DefeatCount = 0;
         }
         Dealer d;
         Player p;
         int PlayerScore;
         int DealerScore;
-        int MatchesCount;
-        int VictoryCount;
-        int DefeatCount;
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             btnStart.Visibility = Visibility.Collapsed;
-            MatchesCount = 0;
-            VictoryCount = 0;
-            DefeatCount = 0;
+            lbMatchResults.Content = "";
+            lbDealerCards.Content = "";
+            lbPlayerCards.Content = "";
+            
             PlayerScore = 0;
             DealerScore = 0;
             d = new Dealer();
             p = new Player();
             p.PlayerReady();
+            p.Hand.Clear();
 
             d.Generate();
+            d.Hand.Clear();
             d.Randomize();
             lbCardsCount.Content = "Cards In Deck = " + d.Deck.Count.ToString();
 
@@ -82,7 +88,7 @@ namespace BlackJack
 
         private void btnHit_Click(object sender, RoutedEventArgs e)
         {
-            if (p.Hand.Count < 11)
+            if (d.Deck.Count > 0)
             {
                 Card card = d.Deal();
                 p.AddCard(card);
@@ -118,7 +124,11 @@ namespace BlackJack
                 lbCardsCount.Content = "Cards In Deck = " + d.Deck.Count.ToString();
             } else
             {
-                MessageBox.Show("Card limit reach!" + "\n" + "Press Stand");
+                MessageBox.Show("No Cards Left" + "\n" + "Press Restart");
+                btnStart.Visibility = Visibility.Visible;
+                btnHit.Visibility = Visibility.Collapsed;
+                btnStand.Visibility = Visibility.Collapsed;
+
             }
         }
 
@@ -128,22 +138,29 @@ namespace BlackJack
             {
                 while (DealerScore < 17)
                 {
-                    Card card = d.Deal();
-                    d.AddCard(card);
-                    lbDealerCards.Content = lbDealerCards.Content + "   " + card.Symbol + card.Suit;
-                    DealerScore = DealerScore + card.Score;
-                    if (DealerScore > 21)
+                    if(d.Deck.Count > 0)
                     {
-                        DealerScore = 0;
-                        foreach (Card c in d.Hand)
+                        Card card = d.Deal();
+                        d.AddCard(card);
+                        lbDealerCards.Content = lbDealerCards.Content + "   " + card.Symbol + card.Suit;
+                        DealerScore = DealerScore + card.Score;
+                        if (DealerScore > 21)
                         {
-                            if (c.Score == 11)
+                            DealerScore = 0;
+                            foreach (Card c in d.Hand)
                             {
-                                c.Score = 1;
+                                if (c.Score == 11)
+                                {
+                                    c.Score = 1;
+                                }
+                                DealerScore = DealerScore + c.Score;
                             }
-                            DealerScore = DealerScore + c.Score;
                         }
+                    } else
+                    {
+                        break;
                     }
+                    
                 }
                 lbDealerScore.Content = "Total = " + DealerScore.ToString();
                 lbCardsCount.Content = "Cards In Deck = " + d.Deck.Count.ToString();
@@ -166,7 +183,16 @@ namespace BlackJack
                 }
                 btnHit.Visibility = Visibility.Collapsed;
                 btnStand.Visibility = Visibility.Collapsed;
-                btnNewRound.Visibility = Visibility.Visible;
+                if(d.Deck.Count > 0)
+                {
+                    btnNewRound.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    MessageBox.Show("No Cards Left" + "\n" + "Press Restart");
+                    btnStart.Visibility = Visibility.Visible;
+                }
+                
             } else
             {
                 MessageBox.Show("Your Score has to be higher than 16");
@@ -184,35 +210,68 @@ namespace BlackJack
             PlayerScore = 0;
             DealerScore = 0;
 
-            Card FirstPlayerCard = d.Deal();
-            Card SecondPlayerCard = d.Deal();
-            p.Init(FirstPlayerCard, SecondPlayerCard);
-            lbPlayerCards.Content = lbPlayerCards.Content + FirstPlayerCard.Symbol + FirstPlayerCard.Suit + "   " + SecondPlayerCard.Symbol + SecondPlayerCard.Suit;
-            PlayerScore = PlayerScore + FirstPlayerCard.Score + SecondPlayerCard.Score;
-            lbPlayerScore.Content = "Total = " + PlayerScore.ToString();
-            lbCardsCount.Content = "Cards In Deck = " + d.Deck.Count.ToString();
-
-            Card FirstDealerCard = d.Deal();
-            d.AddCard(FirstDealerCard);
-            lbDealerCards.Content = lbDealerCards.Content + FirstDealerCard.Symbol + FirstDealerCard.Suit;
-            DealerScore = DealerScore + FirstDealerCard.Score;
-            lbDealerScore.Content = "Total = " + DealerScore.ToString();
-            lbCardsCount.Content = "Cards In Deck = " + d.Deck.Count.ToString();
-
-            btnHit.Visibility = Visibility.Visible;
-            btnStand.Visibility = Visibility.Visible;
-
-            if (PlayerScore == 21)
+            if(d.Deck.Count > 0)
             {
-                lbMatchResults.Foreground = Brushes.Yellow;
-                lbMatchResults.Content = "You Win!";
-                MatchesCount++;
-                VictoryCount++;
-                lbTotalMatches.Content = "Total Matches = " + MatchesCount.ToString();
-                lbVictoryCount.Content = "V = " + VictoryCount.ToString();
+                Card FirstPlayerCard = d.Deal();
+                lbPlayerCards.Content = lbPlayerCards.Content + FirstPlayerCard.Symbol + FirstPlayerCard.Suit + "   ";
+                PlayerScore = PlayerScore + FirstPlayerCard.Score;
+                lbPlayerScore.Content = "Total = " + PlayerScore.ToString();
+                lbCardsCount.Content = "Cards In Deck = " + d.Deck.Count.ToString();
+                if (d.Deck.Count > 0)
+                {
+                    Card SecondPlayerCard = d.Deal();
+                    p.Init(FirstPlayerCard, SecondPlayerCard);
+                    lbPlayerCards.Content = lbPlayerCards.Content + SecondPlayerCard.Symbol + SecondPlayerCard.Suit;
+                    PlayerScore = PlayerScore + SecondPlayerCard.Score;
+                    lbPlayerScore.Content = "Total = " + PlayerScore.ToString();
+                    lbCardsCount.Content = "Cards In Deck = " + d.Deck.Count.ToString();
+
+                    if (d.Deck.Count > 0)
+                    {
+                        Card FirstDealerCard = d.Deal();
+                        d.AddCard(FirstDealerCard);
+                        lbDealerCards.Content = lbDealerCards.Content + FirstDealerCard.Symbol + FirstDealerCard.Suit;
+                        DealerScore = DealerScore + FirstDealerCard.Score;
+                        lbDealerScore.Content = "Total = " + DealerScore.ToString();
+                        lbCardsCount.Content = "Cards In Deck = " + d.Deck.Count.ToString();
+
+                        btnHit.Visibility = Visibility.Visible;
+                        btnStand.Visibility = Visibility.Visible;
+
+                        if (PlayerScore == 21)
+                        {
+                            lbMatchResults.Foreground = Brushes.Yellow;
+                            lbMatchResults.Content = "You Win!";
+                            MatchesCount++;
+                            VictoryCount++;
+                            lbTotalMatches.Content = "Total Matches = " + MatchesCount.ToString();
+                            lbVictoryCount.Content = "V = " + VictoryCount.ToString();
+                            btnHit.Visibility = Visibility.Collapsed;
+                            btnStand.Visibility = Visibility.Collapsed;
+                            btnNewRound.Visibility = Visibility.Visible;
+                        }
+                    } else
+                    {
+                        MessageBox.Show("No Cards Left" + "\n" + "Press Restart");
+                        btnStart.Visibility = Visibility.Visible;
+                        btnHit.Visibility = Visibility.Collapsed;
+                        btnStand.Visibility = Visibility.Collapsed;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No Cards Left" + "\n" + "Press Restart");
+                    btnStart.Visibility = Visibility.Visible;
+                    btnHit.Visibility = Visibility.Collapsed;
+                    btnStand.Visibility = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Cards Left" + "\n" + "Press Restart");
+                btnStart.Visibility = Visibility.Visible;
                 btnHit.Visibility = Visibility.Collapsed;
                 btnStand.Visibility = Visibility.Collapsed;
-                btnNewRound.Visibility = Visibility.Visible;
             }
             
         }
