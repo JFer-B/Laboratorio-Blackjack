@@ -6,18 +6,16 @@ using System.Windows.Media.Animation;
 
 namespace BlackJack
 {
-    public class Dealer
+    public class Dealer : Table
     {
         private List<Card> deck;
-        private List<Card> hand;
 
         public List<Card> Deck { get => deck; set => deck = value; }
-        public List<Card> Hand { get => hand; set => hand = value; }
 
         public void Generate()
         {
             deck = new List<Card>();
-            hand = new List<Card>();
+            Hand = new List<Card>();
             char[] suits = { '♥', '♦', '♣', '♠' };
             string[] symbols = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
 
@@ -49,11 +47,6 @@ namespace BlackJack
             Card c = deck.Last();
             deck.Remove(c);
             return c;
-        }
-
-        public void AddCard(Card card)
-        {
-            hand.Add(card);
         }
 
         public void Init()

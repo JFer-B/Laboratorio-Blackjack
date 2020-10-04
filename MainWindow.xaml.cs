@@ -21,6 +21,7 @@ namespace BlackJack
     public partial class MainWindow : Window
     {
         Dealer d;
+        Player p;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,6 +30,8 @@ namespace BlackJack
         private void btnPrueba_Click(object sender, RoutedEventArgs e)
         {
             d = new Dealer();
+            p = new Player();
+            p.PlayerReady();
             txtPrueba.Text = "";
           
             d.Generate();
@@ -82,12 +85,66 @@ namespace BlackJack
 
         private void Init_Click(object sender, RoutedEventArgs e)
         {
-
             d.Init();
             txtDealerHand.Text = "";
             foreach (Card c in d.Hand)
             {
                 txtDealerHand.Text += c.Symbol + c.Suit + " ";
+            }
+            int count = 1;
+            txtPrueba.Text = "";
+            foreach (Card c in d.Deck)
+            {
+
+                if (count == 13)
+                {
+                    txtPrueba.Text += c.Symbol + c.Suit + "\n";
+                    count = 1;
+                }
+                else
+                {
+                    txtPrueba.Text += c.Symbol + c.Suit + " ";
+                    count++;
+                }
+
+            }
+        }
+
+        private void btnDP_Click(object sender, RoutedEventArgs e)
+        {
+            Card card = d.Deal();
+            p.AddCard(card);
+            txtPlayer.Text = "";
+            foreach (Card c in p.Hand)
+            {
+                txtPlayer.Text += c.Symbol + c.Suit + " ";
+            }
+            int count = 1;
+            txtPrueba.Text = "";
+            foreach (Card c in d.Deck)
+            {
+
+                if (count == 13)
+                {
+                    txtPrueba.Text += c.Symbol + c.Suit + "\n";
+                    count = 1;
+                }
+                else
+                {
+                    txtPrueba.Text += c.Symbol + c.Suit + " ";
+                    count++;
+                }
+
+            }
+        }
+
+        private void btnInitP_Click(object sender, RoutedEventArgs e)
+        {
+            p.Init(d.Deal(),d.Deal());
+            txtPlayer.Text = "";
+            foreach (Card c in p.Hand)
+            {
+                txtPlayer.Text += c.Symbol + c.Suit + " ";
             }
             int count = 1;
             txtPrueba.Text = "";
