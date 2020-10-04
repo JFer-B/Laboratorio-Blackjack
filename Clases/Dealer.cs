@@ -44,7 +44,7 @@ namespace BlackJack
 
         public Card Deal()
         {
-            Card c = deck.Last();
+            Card c = deck.First();
             deck.Remove(c);
             return c;
         }

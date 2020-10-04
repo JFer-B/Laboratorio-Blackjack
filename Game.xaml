@@ -8,7 +8,7 @@
         Title="Game" Height="450" Width="800">
     <Grid Background="#FF285725">
         <Label Content="BLACKJACK" HorizontalAlignment="Left" Height="87" Margin="10,10,0,0" VerticalAlignment="Top" Width="368" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black" FontSize="60" Background="{x:Null}"/>
-        <Button Name="btnStart" Content="Start Game" HorizontalAlignment="Left" Height="44" Margin="611,32,0,0" VerticalAlignment="Top" Width="147" FontFamily="Segoe UI Black" FontSize="20" Click="btnStart_Click"/>
+        <Button Name="btnStart" Content="Start Game" HorizontalAlignment="Left" Height="44" Margin="582,40,0,0" VerticalAlignment="Top" Width="147" FontFamily="Segoe UI Black" FontSize="20" Click="btnStart_Click"/>
         <Label Content="Player's Hand" HorizontalAlignment="Center" Height="41" Margin="0,377,0,0" VerticalAlignment="Top" Width="154" FontFamily="Segoe UI Black" FontSize="20" Foreground="White"/>
         <Label Content="Dealer's Hand" HorizontalAlignment="Center" Height="41" Margin="0,102,0,0" VerticalAlignment="Top" Width="154" FontFamily="Segoe UI Black" FontSize="20" Foreground="White"/>
         <Label Name="lbPlayerScore" Content="Total = 0 " HorizontalAlignment="Center" Height="37" Margin="0,341,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontFamily="Segoe UI Black" FontSize="16"/>
@@ -18,6 +18,11 @@
         <Label Name="lbDealerCards" Content="" HorizontalAlignment="Left" Height="39" Margin="82,173,0,0" VerticalAlignment="Top" Width="617" Background="White" FontFamily="Segoe UI Black" FontSize="24"/>
         <Label Name="lbPlayerCards" Content="" HorizontalAlignment="Left" Height="39" Margin="52,297,0,0" VerticalAlignment="Top" Width="677" Background="White" FontFamily="Segoe UI Black" FontSize="24"/>
         <Label Name="lbDealerScore" Content="Total = 0 " HorizontalAlignment="Center" Height="37" Margin="0,131,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontFamily="Segoe UI Black" FontSize="16"/>
+        <Button Name="btnNewRound" Content="New Round" HorizontalAlignment="Left" Height="40" Margin="500,364,0,0" VerticalAlignment="Top" Width="125" FontSize="20" FontFamily="Segoe UI Black" Click="btnNewRound_Click"/>
+        <Label Name="lbTotalMatches" Content="Total Matches = 0" HorizontalAlignment="Left" Height="29" Margin="379,27,0,0" VerticalAlignment="Top" Width="167" FontFamily="Segoe UI Black" FontSize="16"/>
+        <Label Name="lbVictoryCount" Content="V = 0" HorizontalAlignment="Left" Height="29" Margin="391,56,0,0" VerticalAlignment="Top" Width="83" FontFamily="Segoe UI Black" FontSize="16" Foreground="Yellow"/>
+        <Label Name="lbDefeatCount" Content="D = 0" HorizontalAlignment="Left" Height="29" Margin="463,57,0,0" VerticalAlignment="Top" Width="83" FontFamily="Segoe UI Black" FontSize="16" Foreground="Red"/>
+        <Label Name="lbCardsCount" Content="Cards In Deck = 0" HorizontalAlignment="Left" Height="32" Margin="20,90,0,0" VerticalAlignment="Top" Width="174" FontFamily="Segoe UI Black" FontSize="16" Foreground="White"/>
 
     </Grid>
 </Window>
